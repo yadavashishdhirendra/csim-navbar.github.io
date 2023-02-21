@@ -18,6 +18,8 @@
     <style>
         .navbar-brand>img {
             width: 160px;
+            position: relative;
+            top: -5px;
         }
 
         .nav-item {
@@ -83,20 +85,117 @@
             font-size: 14px;
         }
 
-        .social-icon-top-navbar{
+        .social-icon-top-navbar {
             width: 15px;
         }
 
-        .navbar-light .navbar-toggler{
+        .navbar-light .navbar-toggler {
             box-shadow: none;
             outline: none;
         }
 
         @media screen and (max-width: 640px) {
-            .content-wrapper{
+            .content-wrapper {
                 display: none;
             }
         }
+
+        .bg-light {
+            padding: 0px 30px 0px 30px;
+        }
+
+        /* side menu css starts here */
+        /* The side navigation menu */
+        .sidenav {
+            height: 100%;
+            /* 100% Full-height */
+            width: 0;
+            /* 0 width - change this with JavaScript */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Stay on top */
+            top: 0;
+            background-color: #FFFF;
+            /* Black*/
+            overflow-x: hidden;
+            /* Disable horizontal scroll */
+            padding-top: 60px;
+            /* Place content 60px from the top */
+            transition: 0.5s;
+            /* 0.5 second transition effect to slide in the sidenav */
+        }
+
+        /* The navigation menu links */
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s
+        }
+
+        /* When you mouse over the navigation links, change their color */
+        .sidenav a:hover,
+        .offcanvas a:focus {
+            color: #f1f1f1;
+        }
+
+        /* Position and style the close button (top right corner) */
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+        #main {
+            transition: margin-left .5s;
+            padding: 20px;
+        }
+
+        .sidenav {
+            right: 0;
+        }
+
+        /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+
+        .sidenav {
+            right: 0;
+            box-shadow: 0 10px 55px 5px rgb(137 173 255 / 35%);
+        }
+
+        .sidebar-nav {
+            border: none;
+            background-color: #FFFF;
+            font-size: 22px;
+        }
+
+        @media screen and (max-width: 992px) {
+            .sidebar-nav {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .bg-light {
+                padding: 0px 10px 0px 10px;
+            }
+        }
+
+        /* side menu css ends here */
     </style>
 </head>
 
@@ -112,10 +211,14 @@
                         <a href="">Track</a>
                         <a href="">FAQ</a>
                         <a href="">Reviews</a>
-                        <a href=""><img class="social-icon-top-navbar" src="https://canadiansim.com/wp-content/uploads/2021/08/facebook-3.png" alt=""></a>
-                        <a href=""><img class="social-icon-top-navbar" src="https://canadiansim.com/wp-content/uploads/2021/08/linkedin-1.png" alt=""></a>
-                        <a href=""><img class="social-icon-top-navbar" src="https://canadiansim.com/wp-content/uploads/2021/08/instagram-9-1.png" alt=""></a>
-                        <a href=""><img class="social-icon-top-navbar" src="https://canadiansim.com/wp-content/uploads/2021/08/twitter-2.png" alt=""></a>
+                        <a href=""><img class="social-icon-top-navbar"
+                                src="https://canadiansim.com/wp-content/uploads/2021/08/facebook-3.png" alt=""></a>
+                        <a href=""><img class="social-icon-top-navbar"
+                                src="https://canadiansim.com/wp-content/uploads/2021/08/linkedin-1.png" alt=""></a>
+                        <a href=""><img class="social-icon-top-navbar"
+                                src="https://canadiansim.com/wp-content/uploads/2021/08/instagram-9-1.png" alt=""></a>
+                        <a href=""><img class="social-icon-top-navbar"
+                                src="https://canadiansim.com/wp-content/uploads/2021/08/twitter-2.png" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -158,13 +261,65 @@
                             </ul>
                         </li>
                     </ul>
-                    <!-- <div>
-                    add here sidebar
-                   </div> -->
+                    <div>
+                        <button onclick="openNav()" class="sidebar-nav" type="button">
+                            <span class="navbar-toggler-icon">
+                                <span class="mkdf-side-menu-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="40" height="40" x="0px" y="0px" viewBox="0 0 40 40"
+                                        style="enable-background:new 0 0 40 40;" xml:space="preserve">
+                                        <style type="text/css">
+                                            .open-box {
+                                                fill: #FF0000;
+                                            }
+
+                                            .mkdf-light-header:not(.mkdf-sticky-header-appear) .open-box {
+                                                fill: #5580FF !important;
+                                            }
+
+                                            .open-lines {
+                                                fill: #FFFFFF !important;
+                                            }
+
+                                            .mkdf-light-header .open-lines {
+                                                fill: #fff !important;
+                                            }
+
+                                            .mkdf-light-header .mkdf-page-header&gt;
+
+                                            div:not(.mkdf-sticky-header):not(.fixed) .mkdf-side-menu-button-opener:hover .open-box {
+                                                fill: #FF8A73 !important;
+                                            }
+                                        </style>
+                                        <g>
+                                            <path class="open-box"
+                                                d="M35,40H5c-2.8,0-5-2.2-5-5V5c0-2.8,2.2-5,5-5h30c2.8,0,5,2.2,5,5v30C40,37.8,37.8,40,35,40z">
+                                            </path>
+                                        </g>
+                                        <path class="open-lines"
+                                            d="M28,21H12c-0.6,0-1-0.4-1-1v0c0-0.6,0.4-1,1-1h16c0.6,0,1,0.4,1,1v0C29,20.6,28.6,21,28,21z">
+                                        </path>
+                                        <path class="open-lines"
+                                            d="M28,16H12c-0.6,0-1-0.4-1-1v0c0-0.6,0.4-1,1-1h16c0.6,0,1,0.4,1,1v0C29,15.6,28.6,16,28,16z">
+                                        </path>
+                                        <path class="open-lines"
+                                            d="M28,26H12c-0.6,0-1-0.4-1-1v0c0-0.6,0.4-1,1-1h16c0.6,0,1,0.4,1,1v0C29,25.6,28.6,26,28,26z">
+                                        </path>
+                                    </svg> </span>
+                            </span>
+                        </button>
+                        <!-- <span onclick="openNav()"
+                            style="cursor: pointer; background: green; border: 1px solid black; padding: 5px;">Click me
+                            to get the right sidebar.</span> -->
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -178,6 +333,18 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
+
+    <script type="text/javascript">
+        /* Simple appearence with animation AN-1*/
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "450px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        /* Simple appearence with animation AN-1*/
+    </script>
 </body>
 
 </html>
